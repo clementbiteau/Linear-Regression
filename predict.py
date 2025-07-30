@@ -3,12 +3,14 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 
+# Get input from the user
 try:
     mileage = float(input("Enter mileage (in km): "))
 except ValueError:
     print("Invalid input. Please enter a numeric mileage.")
     sys.exit(1)
-    
+
+# check if we can find the needed params prepared by the train.py as detailed in the task
 try:
     params = pd.read_csv('params.csv')
     theta0 = params['theta0'][0]
@@ -30,6 +32,9 @@ except FileNotFoundError:
 
 km = data['km']
 price = data['price']
+
+#PLOTTING
+# we will plot a figure to better visualize the correlation between Mileage and Price using our predictions
 
 plt.figure(figsize=(10,6))
 plt.scatter(km, price, color='blue', alpha=0.6, label='Data points', s=60, edgecolors='k')
